@@ -29,6 +29,9 @@ set_credentials = function(
   }
 
   value_present = function(x){
+    if(is.null(x)) {
+      return(x)
+    }
     if(x == ""){
       x = NULL
     }
@@ -36,7 +39,7 @@ set_credentials = function(
   }
 
   C = list(
-    username = value_present(value_present),
+    username = value_present(username),
     password = value_present(password)
   )
 
@@ -48,4 +51,20 @@ set_credentials = function(
     }
   }
   return(C)
+}
+
+#' @title Login to NITRC
+#' Returns TRUE is NITRC credentials are valid.
+#' @export
+#' @importFrom RCurl getCurlHandle, postForm, getURL
+nitrc_login = function(){
+  C = set_credentials(error = FALSE)
+  curl <- getCurlHandle()
+  curlSetOpt(cookiejar="cookies.txt", curl=curl)
+  postForm("https://www.nitrc.org/account/login.php", form_loginname=C$username, form_pw=C$password, curl=curl)
+  result <- getURL("https://www.nitrc.org/account/", curl=curl)
+  if(result == ""){
+    return(FALSE)
+  }
+  return(TRUE)
 }
