@@ -39,8 +39,9 @@ set_credentials = function(
   }
 
   C = list(
-    username = value_present(username),
-    password = value_present(password)
+    form_loginname = value_present(username),
+    form_pw = value_present(password),
+    submit = "login"
   )
 
   not_null = !sapply(C, is.null)
@@ -54,17 +55,19 @@ set_credentials = function(
 }
 
 #' @title Login to NITRC
-#' Returns TRUE is NITRC credentials are valid.
+#' Returns TRUE if NITRC credentials are valid.
 #' @export
 #' @importFrom RCurl getCurlHandle, postForm, getURL
-nitrc_login = function(){
+nitrc_login = function(verbose = FALSE){
   C = set_credentials(error = FALSE)
-  curl <- getCurlHandle()
-  curlSetOpt(cookiejar="cookies.txt", curl=curl)
-  postForm("https://www.nitrc.org/account/login.php", form_loginname=C$username, form_pw=C$password, curl=curl)
-  result <- getURL("https://www.nitrc.org/account/", curl=curl)
-  if(result == ""){
-    return(FALSE)
+  login_form <- POST("https://www.nitrc.org/account/login.php", body = C, encode = "form")
+  login_page <- content(GET("https://www.nitrc.org/account"),"text")
+  jsessionid = content(GET("https://www.nitrc.org/ir/data/JSESSION", authenticate(C$form_loginname, C$form_pw)))
+  if(grepl("My Personal Page",login_page))
+  {
+    return(jsessionid)
   }
-  return(TRUE)
+  else{
+    return("Invalid NITRC credentials!")
+  }
 }
