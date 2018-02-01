@@ -55,19 +55,37 @@ set_credentials = function(
 }
 
 #' @title Login to NITRC
-#' Returns TRUE if NITRC credentials are valid.
+#' @description Returns TRUE if NITRC credentials are valid.
+#' @return boolean indicating if the login was successful
 #' @export
 #' @importFrom RCurl getCurlHandle, postForm, getURL
 nitrc_login = function(verbose = FALSE){
   C = set_credentials(error = FALSE)
   login_form <- POST("https://www.nitrc.org/account/login.php", body = C, encode = "form")
   login_page <- content(GET("https://www.nitrc.org/account"),"text")
-  jsessionid = content(GET("https://www.nitrc.org/ir/data/JSESSION", authenticate(C$form_loginname, C$form_pw)))
+
   if(grepl("My Personal Page",login_page))
   {
-    return(jsessionid)
+    jsessionid <<- content(GET("https://www.nitrc.org/ir/data/JSESSION", authenticate(C$form_loginname, C$form_pw)))
+    return(TRUE)
   }
   else{
-    return("Invalid NITRC credentials!")
+    message("Invalid NITRC credentials!")
+    return(FALSE)
+  }
+}
+
+#' @title Check if user is still logged in
+#' @description Figures out if the user session
+#' is still active and if not it will call
+#' \code{nitrc_login()} to re-establish the session
+#' @export
+check_user_session = function(){
+  current_jsessionid = content(POST("https://www.nitrc.org/ir/data/JSESSION"))
+  if(jsessionid == current_jsessionid){
+    return(TRUE)
+  }
+  else{
+    return(nitrc_login())
   }
 }
