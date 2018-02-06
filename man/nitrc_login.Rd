@@ -2,8 +2,13 @@
 % Please edit documentation in R/set_credentials.R
 \name{nitrc_login}
 \alias{nitrc_login}
-\title{Login to NITRC
-Returns TRUE is NITRC credentials are valid.}
+\title{Login to NITRC}
 \usage{
-nitrc_login()
+nitrc_login(verbose = FALSE)
+}
+\value{
+boolean indicating if the login was successful
+}
+\description{
+Returns TRUE if NITRC credentials are valid.
 }
