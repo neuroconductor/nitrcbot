@@ -66,8 +66,8 @@ nitrc_login = function(){
 
   if(grepl("My Personal Page",login_page))
   {
-    jsessionid = NULL
-    jsessionid <<- content(GET("https://www.nitrc.org/ir/data/JSESSION", authenticate(C$form_loginname, C$form_pw)))
+    jsessionid <- content(GET("https://www.nitrc.org/ir/data/JSESSION", authenticate(C$form_loginname, C$form_pw)))
+    options("JSESSIONID" = jsessionid)
     return(TRUE)
   }
   else{
@@ -83,7 +83,7 @@ nitrc_login = function(){
 #' @export
 check_user_session = function(){
   current_jsessionid = content(POST("https://www.nitrc.org/ir/data/JSESSION"))
-  if(jsessionid == current_jsessionid){
+  if(options("JSESSIONID") == current_jsessionid){
     return(TRUE)
   }
   else{
