@@ -4,7 +4,7 @@
 \alias{nitrc_login}
 \title{Login to NITRC}
 \usage{
-nitrc_login(verbose = FALSE)
+nitrc_login()
 }
 \value{
 boolean indicating if the login was successful

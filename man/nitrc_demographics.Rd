@@ -6,13 +6,14 @@
 \usage{
 nitrc_demographics(project = NULL)
 }
+\arguments{
+\item{project}{is the project for which
+we request demographics data, if project
+is NULL, we return all available subjects}
+}
+\value{
+Dataframe of demographics data
+}
 \description{
-Retrieves list of all subjects
- demographic data
- @param project is the project fro which
- we request demographics data, if \code{project}
- is NULL, we return all available subjects
-
- @return Dataframe of demographics data
- @export
+Retrieves list of all subjects demographic data
 }
