@@ -7,9 +7,12 @@
 list_image_sets()
 }
 \value{
-Dataframe of \code{nitrc_sets}
+Dataframe of NITRC projects
 }
 \description{
 Authenticate and retrieve a list
 of all available datasets
+}
+\examples{
+\dontrun{list_image_sets()}
 }

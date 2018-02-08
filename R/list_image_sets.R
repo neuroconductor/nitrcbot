@@ -2,8 +2,9 @@
 #' @description Authenticate and retrieve a list
 #' of all available datasets
 #'
-#' @return Dataframe of \code{nitrc_sets}
+#' @return Dataframe of NITRC projects
 #' @export
+#' @examples \dontrun{list_image_sets()}
 list_image_sets = function(){
   check_user_session()
   nitrc_sets <- content(GET("https://www.nitrc.org/ir/data/projects"))

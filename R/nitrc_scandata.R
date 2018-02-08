@@ -15,19 +15,22 @@ nitrc_scandata = function(
     if(!is.null(project)){
       scan_content = NULL
       if(project %in% nitrc_projects$ID){
-        scan_content <- content(GET(paste0("https://www.nitrc.org/ir/data/experiments?columns=xnat:mrSessionData/ID,label,,xnat:imageScanData/type,xnat:imageScanData/ID,ID,label,subject_ID,,subject_label,xnat:mrScanData/parameters/frames,xnat:mrScanData/parameters/te,xnat:mrScanData/parameters/tr,xnat:mrScanData/parameters/flip,xnat:mrScanData/parameters/voxelRes/x,xnat:mrScanData/parameters/voxelRes/y,xnat:mrScanData/parameters/voxelRes/z,xnat:mrScanData/fieldStrength,xnat:mrScanData/parameters/matrix/x,xnat:mrScanData/parameters/matrix/y,xnat:mrScanData/parameters/partitions,xnat:mrScanData/quality,xnat:mrSessionData/age&project=",project,"&format=json")))
+        scan_content <- content(GET(paste0("https://www.nitrc.org/ir/data/experiments?columns=xnat:mrSessionData/ID,xnat:imageScanData/type,xnat:imageScanData/ID,subject_ID,xnat:mrSessionData/age&project=",project,"&format=json")))
       }
       else{
         return(message(paste0('Could not find project ',project,' in NITRC')))
       }
     }
     else{
-      scan_content <- content(GET(paste0("https://www.nitrc.org/ir/data/experiments?columns=xnat:mrSessionData/ID,label,,xnat:imageScanData/type,xnat:imageScanData/ID,ID,label,subject_ID,,subject_label,xnat:mrScanData/parameters/frames,xnat:mrScanData/parameters/te,xnat:mrScanData/parameters/tr,xnat:mrScanData/parameters/flip,xnat:mrScanData/parameters/voxelRes/x,xnat:mrScanData/parameters/voxelRes/y,xnat:mrScanData/parameters/voxelRes/z,xnat:mrScanData/fieldStrength,xnat:mrScanData/parameters/matrix/x,xnat:mrScanData/parameters/matrix/y,xnat:mrScanData/parameters/partitions,xnat:mrScanData/quality,xnat:mrSessionData/age&format=json")))
+      message('Aquiring scan data for all projects')
+      scan_content <- content(GET(paste0("https://www.nitrc.org/ir/data/experiments?columns=xnat:mrSessionData/ID,xnat:imageScanData/type,xnat:imageScanData/ID,subject_ID,xnat:mrSessionData/age&format=json")))
     }
     scandata = bind_rows(lapply(scan_content$ResultSet$Result, as.data.frame, stringsAsFactors = FALSE))
+    colnames(scandata) <- c("ID","type","session_ID","age","scan_ID","URI")
+    scandata = scandata[c("ID","type","session_ID","age","scan_ID")]
     return(scandata)
   }
   else{
-    return(nitrc_projects)
+    return(NULL)
   }
 }

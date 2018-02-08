@@ -7,6 +7,7 @@
 #' @importFrom dplyr bind_rows
 #' @return Dataframe of demographics data
 #' @export
+#' @examples \dontrun{nitrc_demographics('ixi')}
 nitrc_demographics = function(
   project = NULL){
 
@@ -17,7 +18,8 @@ nitrc_demographics = function(
     if(!is.null(project)){
       demographics_content = NULL
       if(project %in% nitrc_projects$ID){
-        demographics_content = content(GET(paste0("https://www.nitrc.org/ir/data/subjects?columns=label,gender,handedness,project&project=",project,"&format=json")))
+        #get age as it looks like it's kept here for some projects and in xnat:mrSessionData/age for others
+        demographics_content = content(GET(paste0("https://www.nitrc.org/ir/data/subjects?columns=label,gender,handedness,project,age&project=",project,"&format=json")))
       }
       else{
         return(message(paste0('Could not find project ',project,' in NITRC')))
@@ -27,6 +29,7 @@ nitrc_demographics = function(
       demographics_content = content(GET("https://www.nitrc.org/ir/data/subjects?columns=label,gender,handedness,project&format=json"))
     }
     demographics = bind_rows(lapply(demographics_content$ResultSet$Result, as.data.frame, stringsAsFactors = FALSE))
+    demographics = demographics[c("ID","label","project","gender","handedness","age")]
     return(demographics)
   }
   return(nitrc_projects)

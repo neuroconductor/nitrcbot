@@ -17,3 +17,6 @@ Dataframe of demographics data
 \description{
 Retrieves list of all subjects demographic data
 }
+\examples{
+\dontrun{nitrc_demographics('ixi')}
+}
