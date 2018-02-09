@@ -6,6 +6,9 @@
 \usage{
 check_user_session()
 }
+\value{
+State of current user login
+}
 \description{
 Figures out if the user session
 is still active and if not it will call

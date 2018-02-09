@@ -17,3 +17,6 @@ Data frame containing all the data for this particular scan session
 \description{
 Retrieves all the parameters associated with a session ID
 }
+\examples{
+\dontrun{get_scan_params('NITRC_IR_E10469')}
+}

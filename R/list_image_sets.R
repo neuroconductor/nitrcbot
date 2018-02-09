@@ -3,14 +3,15 @@
 #' of all available datasets
 #'
 #' @return Dataframe of NITRC projects
+#' @importFrom httr content GET
 #' @export
 #' @examples \dontrun{list_image_sets()}
-list_image_sets = function(){
+list_image_sets = function() {
   check_user_session()
   nitrc_sets <- content(GET("https://www.nitrc.org/ir/data/projects"))
   sets = NULL
 
-  for(i in 1:length(nitrc_sets$ResultSet$Result)){
+  for(i in 1:length(nitrc_sets$ResultSet$Result)) {
     subjects = "";
     subjects = paste0("https://www.nitrc.org/ir",nitrc_sets$ResultSet$Result[[i]]$URI,"/subjects")
     subjects = content(GET(subjects))
