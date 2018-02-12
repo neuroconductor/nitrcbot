@@ -9,7 +9,7 @@
 #' @importFrom httr content GET
 #' @export
 #' @examples \dontrun{read_nitrc_project('ixi')}
-read_nitrc_project = function(project = NULL) {
+read_nitrc_project = function(project) {
   nitrc_projects <- list_image_sets()
   if(!is.null(nitrc_projects)) {
     if(!is.null(project)) {

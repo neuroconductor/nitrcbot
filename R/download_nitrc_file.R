@@ -9,7 +9,6 @@
 #' @return Display path to the downloaded file
 #' @importFrom httr stop_for_status write_disk progress GET
 #' @export
-#' @examples \dontrun{download_nitrc_file('/data/experiments/NITRC_IR_E11081/scans/B0_1000_2000_raw_acq2/resources/83962/files/dki_2000_18.nii.gz',verbose=TRUE)}
 download_nitrc_file = function(file_path,
                                destfile = NULL,
                                prefix = NULL,

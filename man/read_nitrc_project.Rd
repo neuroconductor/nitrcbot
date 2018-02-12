@@ -4,7 +4,7 @@
 \alias{read_nitrc_project}
 \title{Read NITRC project data}
 \usage{
-read_nitrc_project(project = NULL)
+read_nitrc_project(project)
 }
 \arguments{
 \item{project}{is the project for which

@@ -4,13 +4,15 @@
 \alias{download_nitrc_file}
 \title{Download NITRC file}
 \usage{
-download_nitrc_file(file_path, destfile = NULL, verbose = FALSE,
-  error = FALSE)
+download_nitrc_file(file_path, destfile = NULL, prefix = NULL,
+  verbose = FALSE, error = FALSE)
 }
 \arguments{
 \item{file_path}{Path to the file to be dowloaded}
 
 \item{destfile}{Destination filename}
+
+\item{prefix}{Prefix the file name with this}
 
 \item{verbose}{Should progress be added to download?}
 
@@ -21,7 +23,4 @@ Display path to the downloaded file
 }
 \description{
 Download a single file from NITRC
-}
-\examples{
-\dontrun{download_nitrc_file('/data/experiments/NITRC_IR_E11081/scans/B0_1000_2000_raw_acq2/resources/83962/files/dki_2000_18.nii.gz',verbose=TRUE)}
 }
