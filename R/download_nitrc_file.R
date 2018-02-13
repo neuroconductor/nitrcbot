@@ -2,7 +2,9 @@
 #' @description Download a single file from NITRC
 #' @param file_path Path to the file to be dowloaded
 #' @param destfile Destination filename
-#' @param prefix Prefix the file name with this
+#' @param prefix Prefix the file name with this (prevents
+#' overwritting of same name files in case function is
+#' used to download multiple scan types at once)
 #' @param verbose Should progress be added to download?
 #' @param error Should function error if download failed?
 #'

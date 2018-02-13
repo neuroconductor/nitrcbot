@@ -76,6 +76,15 @@ download_nitrc_dir = function(session_ID,
     }
     return(destfile)
   }
+  else {
+    scan_resources <- get_scan_resources(session_ID,scan_type)
+    mapply(function(file, prefix) {
+      if(verbose) {
+        message(paste0("Downloading ",basename(file)))
+      }
+      download_nitrc_file(file_path = file, prefix = prefix)
+    }, scan_resources[, "URI"], scan_resources[, "cat_ID"])
+  }
 
 }
 
