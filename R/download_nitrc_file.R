@@ -36,5 +36,5 @@ download_nitrc_file = function(file_path,
   if (error) {
     stop_for_status(ret)
   }
-  return(basename(destfile))
+  return(destfile)
 }
