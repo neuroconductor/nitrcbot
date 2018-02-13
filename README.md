@@ -75,4 +75,44 @@ nitrc_sets_summary
 The username and password are valid and we have a list of all 14 NITRC projects. If a project has 0 subjects (e.g. PING) this means we need to request access to the PING project through the NITRC website.
 
 ## Getting Data: Downloading a Directory of Data
-
+As an example we will download a directory of images from the `ixi` project. The first step is to read the project data into a data.frame and for that we'll use the `read_nitrc_project` function.
+``` {r}
+ixi_project <- read_nitrc_project('ixi')
+head(ixi_project)
+               ID label project gender handedness      session_ID scan_ID   age
+1 NITRC_IR_S05189     2     ixi female            NITRC_IR_E10452      PD  35.8
+2 NITRC_IR_S05189     2     ixi female            NITRC_IR_E10452      T1  35.8
+3 NITRC_IR_S05189     2     ixi female            NITRC_IR_E10452     MRA  35.8
+4 NITRC_IR_S05189     2     ixi female            NITRC_IR_E10452     DTI  35.8
+5 NITRC_IR_S05189     2     ixi female            NITRC_IR_E10452      T2  35.8
+6 NITRC_IR_S05190    12     ixi   male            NITRC_IR_E10453      T1 38.78
+```
+We can subset the `ixi` subjects that are `male` and have `T1` imaging.
+``` {r}
+ixi_T1_males = ixi_project %>%
+    filter(gender %in% "male") %>%
+    filter(scan_ID %in% "T1") %>%
+    select(ID, session_ID) %>%
+    unique
+head(ixi_T1_males)
+```
+``` {r}
+               ID      session_ID
+1 NITRC_IR_S05190 NITRC_IR_E10453
+2 NITRC_IR_S05191 NITRC_IR_E10454
+3 NITRC_IR_S05193 NITRC_IR_E10456
+4 NITRC_IR_S05194 NITRC_IR_E10457
+5 NITRC_IR_S05196 NITRC_IR_E10459
+6 NITRC_IR_S05197 NITRC_IR_E10460
+```
+We can now download the full directory (individual files) of T1 data using `download_nitrc_dir` and providing the `session_ID` and `scan_type` arguments:
+``` {r}
+t1_res <- download_nitrc_dir("NITRC_IR_E10453", scan_type="T1")
+t1_res$files
+[1] "77390_IXI012-HH-1211-T1.nii.gz" "77391_qc_t.gif"                 "77391_qc.gif" 
+```
+If we'd rather download a zipped file containing the full directory, we need to specify `zipped = TRUE` as argument for the `download_nitrc_dir` function:
+``` {r}
+> download_nitrc_dir("NITRC_IR_E10453", scan_type="T1", zipped = TRUE)
+[1] "/var/folders/kr/05bm5krj0r3fpwxfdmx4xthm0000gn/T//RtmpVWPpmG/NITRC_IR_E10453.zip"
+```
