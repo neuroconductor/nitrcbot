@@ -116,3 +116,21 @@ If we'd rather download a zipped file containing the full directory, we need to 
 > download_nitrc_dir("NITRC_IR_E10453", scan_type="T1", zipped = TRUE)
 [1] "/var/folders/kr/05bm5krj0r3fpwxfdmx4xthm0000gn/T//RtmpVWPpmG/NITRC_IR_E10453.zip"
 ```
+
+## Getting Data: Downloading a Single File
+
+We can also download a single file using `download_nitrc_file`. To identify the file URI, we'll use the `get_scan_resources` function:
+``` {r}
+r <- get_scan_resources('NITRC_IR_E10453')
+> head(r$URI)
+[1] "/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-00.nii.gz"
+[2] "/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-01.nii.gz"
+[3] "/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-02.nii.gz"
+[4] "/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-03.nii.gz"
+[5] "/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-04.nii.gz"
+[6] "/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-05.nii.gz"
+```
+``` {r}
+> download_nitrc_file("/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-05.nii.gz")
+[1] "/var/folders/kr/05bm5krj0r3fpwxfdmx4xthm0000gn/T//RtmpVWPpmG/IXI012-HH-1211-DTI-05.nii.gz"
+```
