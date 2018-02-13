@@ -12,7 +12,9 @@ download_nitrc_file(file_path, destfile = NULL, prefix = NULL,
 
 \item{destfile}{Destination filename}
 
-\item{prefix}{Prefix the file name with this}
+\item{prefix}{Prefix the file name with this (prevents
+overwritting of same name files in case function is
+used to download multiple scan types at once)}
 
 \item{verbose}{Should progress be added to download?}
 

@@ -5,7 +5,7 @@
 \title{Download image(s)}
 \usage{
 download_nitrc_dir(session_ID, subject_ID = NULL, project_ID = NULL,
-  scan_type = NULL, zipped = FALSE)
+  scan_type = NULL, zipped = FALSE, verbose = FALSE, error = FALSE)
 }
 \arguments{
 \item{session_ID}{Downoad scan images for this particular session ID}
@@ -18,6 +18,10 @@ This is required if subject_ID is specified}
 \item{scan_type}{Download scan images just for this particular type of scan}
 
 \item{zipped}{Zip the downloaded files}
+
+\item{verbose}{Should progress be added to download?}
+
+\item{error}{Should function error if download failed?}
 }
 \value{
 List of downloaded file(s) with full paths
