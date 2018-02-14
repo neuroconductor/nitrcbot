@@ -10,4 +10,5 @@ LazyData: true
 URL: https://www.nitrc.org
 RoxygenNote: 6.0.1
 Suggests: 
-    testthat
+    testthat,
+    covr
