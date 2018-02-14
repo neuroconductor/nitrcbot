@@ -17,7 +17,6 @@ read_nitrc_project = function(project) {
       if(project %in% nitrc_projects$ID) {
         d <- nitrc_demographics(project)
         s <- nitrc_scandata(project)
-        project_data <- merge(d,s,by="ID")
       }
       else {
         return(message(paste0('Could not find project ',project,' in NITRC')))
@@ -26,13 +25,20 @@ read_nitrc_project = function(project) {
     else {
       d <- nitrc_demographics()
       s <- nitrc_scandata()
-      project_data <- merge(d,s,by="ID")
     }
-    project_data$age <- paste0(project_data$age.x,project_data$age.y)
-    project_data <- project_data[c("ID","label","project","gender","handedness","session_ID","scan_ID","age")]
-    return(project_data)
+    if(!is.null(d) && !is.null(s)){
+      project_data <- merge(d,s,by="ID")
+      project_data$age <- paste0(project_data$age.x,project_data$age.y)
+      project_data <- project_data[c("ID","label","project","gender","handedness","session_ID","scan_ID","age")]
+      return(project_data)
+    }
+    else {
+      message("No results found")
+      return(NULL)
+    }
   }
   else {
+    message("Cannot read NITRC projects")
     return(NULL)
   }
 }

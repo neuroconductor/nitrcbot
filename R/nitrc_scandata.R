@@ -27,10 +27,16 @@ nitrc_scandata = function(project = NULL) {
       message('Aquiring scan data for all projects')
       scan_content <- content(GET(paste0("https://www.nitrc.org/ir/data/experiments?columns=xnat:mrSessionData/ID,xnat:imageScanData/type,xnat:imageScanData/ID,subject_ID,xnat:mrSessionData/age&format=json")))
     }
-    scandata = bind_rows(lapply(scan_content$ResultSet$Result, as.data.frame, stringsAsFactors = FALSE))
-    colnames(scandata) <- c("ID","type","session_ID","age","scan_ID","URI")
-    scandata = scandata[c("ID","type","session_ID","age","scan_ID")]
-    return(scandata)
+    if(scan_content$ResultSet$totalRecords > 0) {
+      scandata = bind_rows(lapply(scan_content$ResultSet$Result, as.data.frame, stringsAsFactors = FALSE))
+      colnames(scandata) <- c("ID","type","session_ID","age","scan_ID","URI")
+      scandata = scandata[c("ID","type","session_ID","age","scan_ID")]
+      return(scandata)
+    }
+    else {
+      message("No scan data results found")
+      return(NULL)
+    }
   }
   else {
     return(NULL)
