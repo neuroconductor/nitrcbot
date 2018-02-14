@@ -86,7 +86,7 @@ download_nitrc_dir = function(session_ID,
       }
       download_nitrc_file(file_path = file, prefix = prefix)
     }, scan_resources[, "URI"], scan_resources[, "cat_ID"])
-    file_list <- list(outdir = tempfile(),
+    file_list <- list(outdir = tempdir(),
         files = paste0(scan_resources[, "cat_ID"],"_",basename(scan_resources[, "URI"])))
     return(file_list)
 
