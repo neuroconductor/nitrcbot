@@ -1,11 +1,11 @@
-#' @title Download image(s)
+#' @title Download whole image drectory
 #' @description Download entire session or just the files from a particular
 #' scan type. If \code{scan_type} is NULL the function will download a zipped
 #' file containing the entire resource folder for that particular \code{subject_ID}
 #' or \code{session_ID}. If \code{scan_type} is specified than depending on the
 #' \code{zipped} the downloaded files will be zipped or not.
 #' @param subject_ID Download scan images for this particular subject ID
-#' @param project_ID The project dataset to whom \code{dubject_ID} belongs to
+#' @param project_ID The project dataset to whom \code{dubject_ID} belongs to.
 #' This is required if subject_ID is specified
 #' @param session_ID Downoad scan images for this particular session ID
 #' @param scan_type Download scan images just for this particular type of scan
@@ -14,6 +14,8 @@
 #' @param error Should function error if download failed?
 #'
 #' @return List of downloaded file(s) with full paths
+#' @importFrom httr stop_for_status write_disk progress GET
+#' @export
 download_nitrc_dir = function(session_ID,
                               subject_ID = NULL,
                               project_ID = NULL,
