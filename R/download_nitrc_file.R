@@ -36,5 +36,11 @@ download_nitrc_file = function(file_path,
   if (error) {
     stop_for_status(ret)
   }
-  return(destfile)
+  if(ret$status_code == "200") {
+    return(destfile)
+  }
+  else {
+    message("File not found")
+    return(NULL)
+  }
 }
