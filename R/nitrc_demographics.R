@@ -12,7 +12,7 @@
 nitrc_demographics = function(project = NULL) {
 
   #get list of all nitrc projects
-  nitrc_projects <- list_image_sets()
+  nitrc_projects <- list_image_sets(project)
 
   if(!is.null(nitrc_projects)) {
     if(!is.null(project)){

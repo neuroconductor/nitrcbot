@@ -6,7 +6,28 @@
 #'
 #' @return logical value signifying if it's part of a public project
 #' @importFrom httr content GET
-is_this_public = function(session_ID,
-                          subject_ID = NULL) {
+is_this_public = function(session_ID = NULL,
+                          subject_ID = NULL,
+                          project = NULL) {
 
+  public_projects = c("studyforrest_rev003", "ixi", "parktdi", "cs_schizbull08", "fcon_1000")
+  if(!is.null(project)) {
+    if(project %in% public_projects) {
+      return(TRUE)
+    }
+  }
+  if(!is.null(subject_ID) || !is.null(session_ID)) {
+    url <- paste0("https://www.nitrc.org/ir/data/subjects/",subject_ID,"?format=json")
+    if(!is.null(session_ID)) {
+      url <- paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"?format=json")
+    }
+    url_content = content(GET(url))
+    identified_project <- url_content$items[[1]]$data_fields$project
+    if(!is.null(identified_project)) {
+      if(identified_project %in% public_projects) {
+        return(TRUE)
+      }
+    }
+  }
+  return(check_user_session())
 }

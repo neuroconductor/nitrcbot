@@ -6,8 +6,8 @@
 #' @importFrom httr content GET
 #' @export
 #' @examples \dontrun{list_image_sets()}
-list_image_sets = function() {
-  check_user_session()
+list_image_sets = function(project = NULL) {
+  is_this_public()
   nitrc_sets <- content(GET("https://www.nitrc.org/ir/data/projects"))
   sets = NULL
 

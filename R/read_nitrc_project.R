@@ -10,7 +10,7 @@
 #' @export
 #' @examples \dontrun{read_nitrc_project('ixi')}
 read_nitrc_project = function(project) {
-  nitrc_projects <- list_image_sets()
+  nitrc_projects <- list_image_sets(project)
   if(!is.null(nitrc_projects)) {
     if(!is.null(project)) {
       project_data = NULL

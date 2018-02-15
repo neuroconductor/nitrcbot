@@ -2,6 +2,7 @@
 #' @description Retrieves all the resources(files) associated with a session ID
 #' @param session_ID the session ID identifier, unique for each individual subject
 #' @param scan_type the type of scan for which we need to list the acquisition parameters
+#' @param project optional, signals the project to which the session_ID belongs
 #'
 #' @return Data frame containing all the resources for this particular scan session
 #' @importFrom dplyr bind_rows
@@ -9,9 +10,10 @@
 #' @export
 #' @examples \dontrun{get_scan_resources('NITRC_IR_E10469')}
 get_scan_resources = function(session_ID = NULL,
-                              scan_type = NULL
+                              scan_type = NULL,
+                              project = NULL
                               ) {
-  if(check_user_session() && !is.null(session_ID)) {
+  if(is_this_public(session_ID = session_ID, project = project) && !is.null(session_ID)) {
     if(!is.null(scan_type)) {
       scan_params <- get_scan_params(session_ID,scan_type)
       if(!is.null(scan_params)) {
