@@ -11,7 +11,7 @@ get_scan_resources(session_ID = NULL, scan_type = NULL, project = NULL)
 
 \item{scan_type}{the type of scan for which we need to list the acquisition parameters}
 
-\item{project}{optional, signals the project to which the session_ID belongs}
+\item{project}{optional, identifies the project to which the session_ID belongs}
 }
 \value{
 Data frame containing all the resources for this particular scan session

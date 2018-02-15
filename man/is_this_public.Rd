@@ -10,6 +10,8 @@ is_this_public(session_ID = NULL, subject_ID = NULL, project = NULL)
 \item{session_ID}{the session ID identifier, unique for each individual subject}
 
 \item{subject_ID}{the subject ID identifier}
+
+\item{project}{the NITRC project for which we try to identify if it's public}
 }
 \value{
 logical value signifying if it's part of a public project
