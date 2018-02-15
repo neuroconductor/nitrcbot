@@ -4,7 +4,7 @@
 \alias{list_image_sets}
 \title{Get NITRC image sets listing}
 \usage{
-list_image_sets()
+list_image_sets(project = NULL)
 }
 \value{
 Dataframe of NITRC projects

@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_nitrc_dir.R
 \name{download_nitrc_dir}
 \alias{download_nitrc_dir}
-\title{Download image(s)}
+\title{Download whole image drectory}
 \usage{
 download_nitrc_dir(session_ID, subject_ID = NULL, project_ID = NULL,
   scan_type = NULL, zipped = FALSE, verbose = FALSE, error = FALSE)
@@ -12,7 +12,7 @@ download_nitrc_dir(session_ID, subject_ID = NULL, project_ID = NULL,
 
 \item{subject_ID}{Download scan images for this particular subject ID}
 
-\item{project_ID}{The project dataset to whom \code{dubject_ID} belongs to
+\item{project_ID}{The project dataset to whom \code{dubject_ID} belongs to.
 This is required if subject_ID is specified}
 
 \item{scan_type}{Download scan images just for this particular type of scan}
