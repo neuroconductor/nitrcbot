@@ -3,6 +3,7 @@
 #' \code{session_ID} belongs to a public project.
 #' @param subject_ID the subject ID identifier
 #' @param session_ID the session ID identifier, unique for each individual subject
+#' @param project the NITRC project for which we try to identify if it's public
 #'
 #' @return logical value signifying if it's part of a public project
 #' @importFrom httr content GET
@@ -21,11 +22,14 @@ is_this_public = function(session_ID = NULL,
     if(!is.null(session_ID)) {
       url_address = paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"?format=json")
     }
-    url_content = content(GET(url_address))
-    identified_project <- url_content$items[[1]]$data_fields$project
-    if(!is.null(identified_project)) {
-      if(identified_project %in% public_projects) {
-        return(TRUE)
+    url_content = GET(url_address)
+    if(status_code(url_content) == "200") {
+      url_content = content(url_content)
+      identified_project <- url_content$items[[1]]$data_fields$project
+      if(!is.null(identified_project)) {
+        if(identified_project %in% public_projects) {
+          return(TRUE)
+        }
       }
     }
   }

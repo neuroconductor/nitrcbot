@@ -2,7 +2,7 @@
 #' @description Retrieves all the resources(files) associated with a session ID
 #' @param session_ID the session ID identifier, unique for each individual subject
 #' @param scan_type the type of scan for which we need to list the acquisition parameters
-#' @param project optional, signals the project to which the session_ID belongs
+#' @param project optional, identifies the project to which the session_ID belongs
 #'
 #' @return Data frame containing all the resources for this particular scan session
 #' @importFrom dplyr bind_rows
