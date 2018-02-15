@@ -17,11 +17,11 @@ is_this_public = function(session_ID = NULL,
     }
   }
   if(!is.null(subject_ID) || !is.null(session_ID)) {
-    url <- paste0("https://www.nitrc.org/ir/data/subjects/",subject_ID,"?format=json")
+    url_address <- paste0("https://www.nitrc.org/ir/data/subjects/",subject_ID,"?format=json")
     if(!is.null(session_ID)) {
-      url <- paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"?format=json")
+      url_address <- paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"?format=json")
     }
-    url_content = content(GET(url))
+    url_content = content(GET(paste0(url_address)))
     identified_project <- url_content$items[[1]]$data_fields$project
     if(!is.null(identified_project)) {
       if(identified_project %in% public_projects) {
