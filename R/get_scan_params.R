@@ -12,7 +12,7 @@ get_scan_params = function(session_ID = NULL,
                            scan_type = NULL
                            ) {
   if(check_user_session() && !is.null(session_ID)) {
-    scan_params <- content(GET(paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"/scans?xsiType=xnat:mrScanData&columns=xnat:imageScanData/ID,xnat:mrScanData/parameters/frames,xnat:mrScanData/parameters/te,xnat:mrScanData/parameters/tr,xnat:mrScanData/parameters/flip,xnat:mrScanData/parameters/voxelRes/x,xnat:mrScanData/parameters/voxelRes/y,xnat:mrScanData/parameters/voxelRes/z,xnat:mrScanData/fieldStrength,xnat:mrScanData/parameters/matrix/x,xnat:mrScanData/parameters/matrix/y,xnat:mrScanData/parameters/partitions,xnat:mrScanData/quality&project=kin&format=json")))
+    scan_params <- content(GET(paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"/scans?xsiType=xnat:mrScanData&columns=xnat:imageScanData/ID,xnat:mrScanData/parameters/frames,xnat:mrScanData/parameters/te,xnat:mrScanData/parameters/tr,xnat:mrScanData/parameters/flip,xnat:mrScanData/parameters/voxelRes/x,xnat:mrScanData/parameters/voxelRes/y,xnat:mrScanData/parameters/voxelRes/z,xnat:mrScanData/fieldStrength,xnat:mrScanData/parameters/matrix/x,xnat:mrScanData/parameters/matrix/y,xnat:mrScanData/parameters/partitions,xnat:mrScanData/quality&format=json")))
     scan_params = bind_rows(lapply(scan_params$ResultSet$Result, as.data.frame, stringsAsFactors = FALSE))
     if(nrow(scan_params) > 0) {
       colnames(scan_params) <- c("TE","matrix_Y","matrix_X","URI","flip","quality","imagescandata_id","frames","voxel_Z","TR","partitions","fieldStrength","type","voxel_Y","voxel_X")
