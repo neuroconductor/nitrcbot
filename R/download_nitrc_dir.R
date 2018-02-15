@@ -51,7 +51,7 @@ download_nitrc_dir = function(session_ID,
   }
   scan_params <- get_scan_params(session_ID, scan_type)
   if(is.null(scan_params)) {
-    message('No images found for the provided parameters')
+    return(message('No images found for the provided parameters'))
   }
   if(zipped) {
     url_address <- paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"/scans/")
