@@ -6,6 +6,10 @@
 \usage{
 list_image_sets(project = NULL)
 }
+\arguments{
+\item{project}{optional, called from other functions
+in order to figure out if a project is public}
+}
 \value{
 Dataframe of NITRC projects
 }

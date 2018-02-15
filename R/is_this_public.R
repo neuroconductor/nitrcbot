@@ -6,7 +6,7 @@
 #' @param project the NITRC project for which we try to identify if it's public
 #'
 #' @return logical value signifying if it's part of a public project
-#' @importFrom httr content GET
+#' @importFrom httr content GET status_code
 is_this_public = function(session_ID = NULL,
                           subject_ID = NULL,
                           project = NULL) {
@@ -14,7 +14,6 @@ is_this_public = function(session_ID = NULL,
   public_projects = c("studyforrest_rev003", "ixi", "parktdi", "cs_schizbull08", "fcon_1000")
   if(!is.null(project)) {
     if(project %in% public_projects) {
-      message('111')
       return(TRUE)
     }
   }

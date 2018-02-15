@@ -1,13 +1,15 @@
 #' @title Get NITRC image sets listing
 #' @description Authenticate and retrieve a list
 #' of all available datasets
+#' @param project optional, called from other functions
+#' in order to figure out if a project is public
 #'
 #' @return Dataframe of NITRC projects
 #' @importFrom httr content GET
 #' @export
 #' @examples \dontrun{list_image_sets()}
 list_image_sets = function(project = NULL) {
-  is_this_public()
+  is_this_public(project = project)
   nitrc_sets <- content(GET("https://www.nitrc.org/ir/data/projects"))
   sets = NULL
 
