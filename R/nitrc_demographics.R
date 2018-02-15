@@ -27,7 +27,7 @@ nitrc_demographics = function(project = NULL) {
       }
     }
     else {
-      demographics_content = content(GET("https://www.nitrc.org/ir/data/subjects?columns=label,gender,handedness,project&format=json"))
+      demographics_content = content(GET("https://www.nitrc.org/ir/data/subjects?columns=label,gender,handedness,project,age&format=json"))
     }
     if(demographics_content$ResultSet$totalRecords > 0) {
       demographics = bind_rows(lapply(demographics_content$ResultSet$Result, as.data.frame, stringsAsFactors = FALSE))

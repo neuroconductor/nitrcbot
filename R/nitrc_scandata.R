@@ -38,7 +38,5 @@ nitrc_scandata = function(project = NULL) {
       return(NULL)
     }
   }
-  else {
     return(NULL)
-  }
 }
