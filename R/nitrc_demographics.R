@@ -3,16 +3,18 @@
 #' @param project is the project for which
 #'  we request demographics data, if project
 #'  is NULL, we return all available subjects
+#' @param nitrc_projects data.frame with all available NITRC projects
 #'
 #' @return Dataframe of demographics data
 #' @importFrom dplyr bind_rows
 #' @importFrom httr content GET
 #' @export
 #' @examples \dontrun{nitrc_demographics('ixi')}
-nitrc_demographics = function(project = NULL) {
+nitrc_demographics = function(project = NULL, nitrc_projects = NULL) {
 
-  #get list of all nitrc projects
-  nitrc_projects <- list_image_sets(project)
+  if(is.null(nitrc_projects)) {
+    nitrc_projects <- list_image_sets(project)
+  }
 
   if(!is.null(nitrc_projects)) {
     if(!is.null(project)){

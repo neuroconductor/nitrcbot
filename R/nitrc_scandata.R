@@ -1,16 +1,18 @@
 #' @title Get/list scan data
 #' @description Retrieves NITRC scan data info
 #' @param project is the project for which we request demographics data, if project is NULL, we return all available subjects
+#' @param nitrc_projects data.frame with all available NITRC projects
 #'
 #' @return Dataframe of scan data
 #' @importFrom httr content GET
 #' @importFrom dplyr bind_rows
 #' @export
 #' @examples \dontrun{nitrc_scandata('ixi')}
-nitrc_scandata = function(project = NULL) {
+nitrc_scandata = function(project = NULL, nitrc_projects = NULL) {
 
-  #get list of all nitrc projects
-  nitrc_projects <- list_image_sets(project)
+  if(is.null(nitrc_projects)) {
+    nitrc_projects <- list_image_sets(project)
+  }
 
   if(!is.null(nitrc_projects)) {
     if(!is.null(project)) {

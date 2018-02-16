@@ -4,12 +4,14 @@
 \alias{nitrc_demographics}
 \title{Get/list project demographics}
 \usage{
-nitrc_demographics(project = NULL)
+nitrc_demographics(project = NULL, nitrc_projects = NULL)
 }
 \arguments{
 \item{project}{is the project for which
 we request demographics data, if project
 is NULL, we return all available subjects}
+
+\item{nitrc_projects}{data.frame with all available NITRC projects}
 }
 \value{
 Dataframe of demographics data
