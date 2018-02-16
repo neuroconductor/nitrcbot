@@ -5,8 +5,4 @@ test_that("nitrc_scandata",{
   testthat::expect_is(nitrc_scandata('ixi'),'data.frame')
   testthat::expect_null(nitrc_scandata('kin'))
   testthat::expect_message(nitrc_scandata(),"Aquiring scan data for all projects")
-
-  if(is.null(list_image_sets())) {
-    testthat::expect_null(nitrc_scandata('kin'))
-  }
 })

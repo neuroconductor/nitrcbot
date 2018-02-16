@@ -22,10 +22,6 @@ read_nitrc_project = function(project) {
         return(message(paste0('Could not find project ',project,' in NITRC')))
       }
     }
-    else {
-      d <- nitrc_demographics()
-      s <- nitrc_scandata()
-    }
     if(!is.null(d) && !is.null(s)){
       project_data <- merge(d,s,by="ID")
       project_data$age <- paste0(project_data$age.x,project_data$age.y)

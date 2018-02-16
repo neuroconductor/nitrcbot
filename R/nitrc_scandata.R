@@ -38,5 +38,6 @@ nitrc_scandata = function(project = NULL) {
       return(NULL)
     }
   }
+    message("Cannot read NITRC projects")
     return(NULL)
 }

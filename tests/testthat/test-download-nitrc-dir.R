@@ -4,5 +4,8 @@ test_that("download_nirc_dir", {
   testthat::expect_message(download_nitrc_dir('NITRC_IR_E10452', subject_ID = "NITRC_IR_S05274", project="ixi"),"Provided session_ID does not match the provided subject_ID session_ID.")
   testthat::expect_message(download_nitrc_dir('NITRC_IR_E110452'),"No images found for the provided parameters")
   testthat::expect_is(download_nitrc_dir('NITRC_IR_E10452'),"list")
+  testthat::expect_is(download_nitrc_dir('NITRC_IR_E10452', scan_type="T1", zipped = TRUE),"character")
+  testthat::expect_equal(basename(download_nitrc_dir('NITRC_IR_E10452', scan_type="T1", zipped = TRUE)),"NITRC_IR_E10452.zip")
   testthat::expect_null(download_nitrc_dir('NITRC_IR_E10452', scan_type="T3"))
+  testthat::expect_message(download_nitrc_dir('NITRC_IR_E10452', scan_type="T1", verbose = TRUE), "Downloading IXI002-Guys-0828-T1.nii.gz")
 })
