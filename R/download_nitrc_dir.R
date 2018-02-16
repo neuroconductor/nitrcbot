@@ -5,7 +5,7 @@
 #' or \code{session_ID}. If \code{scan_type} is specified than depending on the
 #' \code{zipped} the downloaded files will be zipped or not.
 #' @param subject_ID Download scan images for this particular subject ID
-#' @param project_ID The project dataset to whom \code{dubject_ID} belongs to.
+#' @param project The project dataset to whom \code{subject_ID} belongs to.
 #' This is required if subject_ID is specified
 #' @param session_ID Downoad scan images for this particular session ID
 #' @param scan_type Download scan images just for this particular type of scan
@@ -16,9 +16,9 @@
 #' @return List of downloaded file(s) with full paths
 #' @importFrom httr stop_for_status write_disk progress GET
 #' @export
-download_nitrc_dir = function(session_ID,
+download_nitrc_dir = function(session_ID = NULL,
                               subject_ID = NULL,
-                              project_ID = NULL,
+                              project = NULL,
                               scan_type = NULL,
                               zipped = FALSE,
                               verbose = FALSE,
@@ -26,10 +26,10 @@ download_nitrc_dir = function(session_ID,
 
   subject_session_ID <- NULL
   if(!is.null(subject_ID)) {
-    if(!is.null(project_ID)) {
-      nitrc_projects <- list_image_sets()
-      if(project_ID %in% nitrc_projects$ID){
-        all_project_data <- read_nitrc_project(project_ID)
+    if(!is.null(project)) {
+      nitrc_projects <- list_image_sets(project)
+      if(project %in% nitrc_projects$ID){
+        all_project_data <- read_nitrc_project(project)
         subject_session_ID <- unique(all_project_data[all_project_data$ID == subject_ID,]$session_ID)
       }
       else {
@@ -42,9 +42,11 @@ download_nitrc_dir = function(session_ID,
       return(NULL)
     }
   }
-  if(!is.null(subject_session_ID) && subject_session_ID != session_ID) {
-    message('Provided session_ID does not match the provided subject_ID session_ID.')
-    return(NULL)
+  if(!is.null(subject_session_ID) && !is.null(session_ID)) {
+    if(subject_session_ID != session_ID) {
+      message('Provided session_ID does not match the provided subject_ID session_ID.')
+      return(NULL)
+    }
   }
   if(is.null(session_ID)) {
     session_ID <- subject_session_ID
