@@ -3,14 +3,25 @@
 #' of all available datasets
 #' @param project optional, called from other functions
 #' in order to figure out if a project is public
+#' @param error Should function error if httr::GET failed
 #'
 #' @return Dataframe of NITRC projects
-#' @importFrom httr content GET
+#' @importFrom httr content GET stop_for_status
 #' @export
 #' @examples \dontrun{list_image_sets()}
-list_image_sets = function(project = NULL) {
+list_image_sets = function(project = NULL,
+                           error = FALSE) {
   is_this_public(project = project)
-  nitrc_sets <- content(GET("https://www.nitrc.org/ir/data/projects"))
+  args = list(
+    url = "https://www.nitrc.org/ir/data/projects"
+  )
+  ret <- do.call("GET", args)
+
+  if (error) {
+    stop_for_status(ret)
+  }
+
+  nitrc_sets <- content(ret)
   sets = NULL
 
   for(i in 1:length(nitrc_sets$ResultSet$Result)) {

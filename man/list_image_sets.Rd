@@ -4,11 +4,13 @@
 \alias{list_image_sets}
 \title{Get NITRC image sets listing}
 \usage{
-list_image_sets(project = NULL)
+list_image_sets(project = NULL, error = FALSE)
 }
 \arguments{
 \item{project}{optional, called from other functions
 in order to figure out if a project is public}
+
+\item{error}{Should function error if httr::GET failed}
 }
 \value{
 Dataframe of NITRC projects
