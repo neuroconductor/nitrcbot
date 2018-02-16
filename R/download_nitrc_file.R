@@ -35,8 +35,6 @@ download_nitrc_file = function(file_path,
 
   if (error) {
     stop_for_status(ret)
-    warn_for_status(x)
-    message_for_status(x)
   }
   if(ret$status_code == "200") {
     return(destfile)
