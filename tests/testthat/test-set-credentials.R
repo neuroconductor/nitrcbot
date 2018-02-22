@@ -5,8 +5,8 @@ test_that("set_credentials", {
 
 test_that("nitrc_login", {
   testthat::expect_is(nitrc_login(), "logical")
-  username = Sys.getenv("TEMP_NITRC_WEB_USER")
-  password = Sys.getenv("TEMP_NITRC_WEB_PASS")
+  username = Sys.getenv("TEST_NITRC_WEB_USER")
+  password = Sys.getenv("TEST_NITRC_WEB_PASS")
   if(username == "") {username = "user"}
   if(password == "") {password = "pass"}
   set_credentials(username = username, password = password)
