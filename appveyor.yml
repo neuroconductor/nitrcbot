@@ -15,6 +15,12 @@ cache:
 
 # Adapt as necessary starting from here
 
+environment:
+  TEST_NITRC_WEB_USER:
+    secure: em5Pv6DvmYMR4yY9t8VghQ==
+  TEST_NITRC_WEB_PASS:
+    secure: cq5B33ARBd1GvzM2H/yoCA==
+
 build_script:
   - travis-tool.sh install_deps
 
