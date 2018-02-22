@@ -59,7 +59,7 @@ set_credentials = function(username = NULL,
 nitrc_login = function() {
   C = set_credentials(error = FALSE)
   login_form <- POST("https://www.nitrc.org/account/login.php", body = C, encode = "form")
-  login_page <- content(GET("https://www.nitrc.org/account"))
+  login_page <- content(GET("https://www.nitrc.org/account"),"text")
   if(grepl("My Personal Page",login_page)) {
     jsessionid <- content(GET("https://www.nitrc.org/ir/data/JSESSION", authenticate(C$form_loginname, C$form_pw)))
     options("JSESSIONID" = jsessionid)
