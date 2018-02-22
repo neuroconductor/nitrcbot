@@ -5,7 +5,6 @@ test_that("set_credentials", {
 
 test_that("nitrc_login", {
   testthat::expect_is(nitrc_login(), "logical")
-  testthat::expect_true(nitrc_login())
 })
 
 test_that("check_user_session", {
