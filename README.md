@@ -135,3 +135,16 @@ r <- get_scan_resources('NITRC_IR_E10453')
 > download_nitrc_file("/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-05.nii.gz")
 [1] "/var/folders/kr/05bm5krj0r3fpwxfdmx4xthm0000gn/T//RtmpVWPpmG/IXI012-HH-1211-DTI-05.nii.gz"
 ```
+
+## Retrieve scan parameters
+
+To retrieve the scan paramaters for a specific subject we can use the `get_scan_params` function:
+``` {r}
+> get_scan_params('NITRC_IR_E11033')
+  type imagescandata_id      TR     TE flip matrix_X matrix_Y voxel_X voxel_Y voxel_Z frames partitions fieldStrength quality
+1  DTI            44882 9054.01   80.0   90                                                                                  
+2  MRA            44883    20.0 6.9052   25                                                                                  
+3   PD            44884 8178.34    8.0   90                                                                                  
+4   T1            44885   9.813  4.603    8                                                                                  
+5   T2            44886 8178.34  100.0   90  
+```
