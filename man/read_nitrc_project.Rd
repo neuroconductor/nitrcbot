@@ -4,12 +4,14 @@
 \alias{read_nitrc_project}
 \title{Read NITRC project data}
 \usage{
-read_nitrc_project(project)
+read_nitrc_project(project, jsessionID = NULL)
 }
 \arguments{
 \item{project}{is the project for which
 we request the aggregated data, if project
 is NULL, we return all available data for all projects}
+
+\item{jsessionID}{value for the JSESSIONID cookie}
 }
 \value{
 Dataframe of project data

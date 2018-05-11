@@ -52,6 +52,7 @@ download_nitrc_dir = function(session_ID = NULL,
     session_ID <- subject_session_ID
   }
   scan_params <- get_scan_params(session_ID, scan_type)
+
   if(is.null(scan_params)) {
     return(message('No images found for the provided parameters'))
   }

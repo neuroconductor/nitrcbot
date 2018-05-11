@@ -55,20 +55,30 @@ set_credentials = function(username = NULL,
 #' @description Returns TRUE if NITRC credentials are valid.
 #' @return boolean indicating if the login was successful
 #' @importFrom httr GET POST content authenticate
+#' @importFrom RCurl parseHTTPHeader
 #' @export
 nitrc_login = function() {
   C = set_credentials(error = FALSE)
-  login_form <- POST("https://www.nitrc.org/account/login.php", body = C, encode = "form")
-  login_page <- content(GET("https://www.nitrc.org/account"),"text")
-  if(grepl("My Personal Page",login_page)) {
-    jsessionid <- content(GET("https://www.nitrc.org/ir/data/JSESSION", authenticate(C$form_loginname, C$form_pw)))
-    options("JSESSIONID" = jsessionid)
-    return(TRUE)
-  }
-  else {
-    message("Invalid NITRC credentials!")
+  reader <- basicTextGatherer()
+  header <- basicTextGatherer()
+  curlPerform(url = paste('https://nitrc.org/ir', '/data/JSESSION', sep = ''),
+              writefunction = reader$update,
+              headerfunction = header$update,
+              ssl.verifypeer = FALSE,
+              userpwd = paste(C$form_loginname, C$form_pw, sep = ':'),
+              httpauth=1L)
+  status = parseHTTPHeader(header$value())['status']
+  if(status == 401) {
+    message('bad username/password')
+    options("JSESSIONID" = "")
+    return(FALSE)
+  } else if(status != 200) {
+    message('error authenticating')
+    options("JSESSIONID" = "")
     return(FALSE)
   }
+  options("JSESSIONID" = reader$value())
+  return(TRUE)
 }
 
 #' @title Check if user is still logged in
@@ -79,11 +89,33 @@ nitrc_login = function() {
 #' @importFrom httr content POST
 #' @export
 check_user_session = function() {
-  current_jsessionid = content(POST("https://www.nitrc.org/ir/data/JSESSION"))
+  current_jsessionid = query_nitrc('https://www.nitrc.org/ir/data/JSESSION')
   if(options("JSESSIONID") == current_jsessionid) {
     return(TRUE)
   }
   else {
     return(nitrc_login())
   }
+}
+
+#' @title Perform RCurl operations
+#' @description Queries NITRC website using RCurl functions
+#' @importFrom RCurl basicTextGatherer curlPerform
+#' @param url is the URL for the RCurl request parseHTTPHeader
+#' @param jsessionID value for the JSESSIONID cookie
+query_nitrc = function(url, jsessionID = NULL) {
+  if(is.null(jsessionID)) {
+    jsessionID = options("JSESSIONID")
+  }
+  reader <- basicTextGatherer()
+  header <- basicTextGatherer()
+  curlPerform(url = paste(url, 'GET', sep = ''),
+              writefunction = reader$update,
+              headerfunction = header$update,
+              ssl.verifypeer = FALSE,
+              cookie = paste('JSESSIONID=', jsessionID, sep = ''))
+  if(parseHTTPHeader(header$value())['status'] != 200) {
+    return(FALSE)
+  }
+  return(reader$value())
 }

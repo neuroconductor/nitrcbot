@@ -7,6 +7,7 @@
 #'
 #' @return logical value signifying if it's part of a public project
 #' @importFrom httr content GET status_code
+#' @importFrom jsonlite fromJSON
 is_this_public = function(session_ID = NULL,
                           subject_ID = NULL,
                           project = NULL) {
@@ -18,20 +19,21 @@ is_this_public = function(session_ID = NULL,
     }
   }
   if(!is.null(subject_ID) || !is.null(session_ID)) {
-    url_address = paste0("https://www.nitrc.org/ir/data/subjects/",subject_ID,"?format=json")
+    url_address = paste0("https://www.nitrc.org/ir/data/subjects/",subject_ID,"?format=json ")
     if(!is.null(session_ID)) {
-      url_address = paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"?format=json")
+      url_address = paste0("https://www.nitrc.org/ir/data/experiments/",session_ID,"?format=json ")
     }
-    url_content = GET(url_address)
-    if(status_code(url_content) == "200") {
-      url_content = content(url_content)
-      identified_project <- url_content$items[[1]]$data_fields$project
+    query_content = query_nitrc(url_address)
+    if(query_content == FALSE) {return(check_user_session())}
+
+    url_content = fromJSON(query_nitrc(url_address))
+
+    identified_project <- url_content$items$data_fields$project
       if(!is.null(identified_project)) {
         if(identified_project %in% public_projects) {
           return(TRUE)
         }
       }
-    }
   }
   return(check_user_session())
 }

@@ -7,6 +7,7 @@
 #'
 #' @return Dataframe of NITRC projects
 #' @importFrom httr content GET stop_for_status
+#' @importFrom jsonlite fromJSON
 #' @export
 #' @examples \dontrun{list_image_sets()}
 list_image_sets = function(project = NULL,
@@ -25,12 +26,12 @@ list_image_sets = function(project = NULL,
   sets = NULL
 
   for(i in 1:length(nitrc_sets$ResultSet$Result)) {
-    subjects = "";
     subjects = paste0("https://www.nitrc.org/ir",nitrc_sets$ResultSet$Result[[i]]$URI,"/subjects")
-    subjects = content(GET(subjects))
+    subjects = fromJSON(query_nitrc(subjects))
     subjects = subjects$ResultSet$totalRecords
     sets = rbind(sets,data.frame(nitrc_sets$ResultSet$Result[[i]]$ID,nitrc_sets$ResultSet$Result[[i]]$name,nitrc_sets$ResultSet$Result[[i]]$description,nitrc_sets$ResultSet$Result[[i]]$URI,subjects))
   }
   colnames(sets) <- c("ID","Name","Description","URL","Subjects")
   return(sets)
+
 }

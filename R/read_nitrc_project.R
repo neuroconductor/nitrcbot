@@ -3,20 +3,22 @@
 #' @param project is the project for which
 #'  we request the aggregated data, if project
 #'  is NULL, we return all available data for all projects
+#' @param jsessionID value for the JSESSIONID cookie
 #'
 #' @return Dataframe of project data
 #' @importFrom dplyr bind_rows
 #' @importFrom httr content GET
 #' @export
 #' @examples \dontrun{read_nitrc_project('ixi')}
-read_nitrc_project = function(project) {
+read_nitrc_project = function(project,
+                              jsessionID = NULL) {
   nitrc_projects <- list_image_sets(project)
 
   if(!is.null(project)) {
     project_data = NULL
     if(project %in% nitrc_projects$ID) {
-      d <- nitrc_demographics(project)
-      s <- nitrc_scandata(project)
+      d <- nitrc_demographics(project, jsessionID = jsessionID)
+      s <- nitrc_scandata(project, jsessionID = jsessionID)
     }
     else {
       return(message(paste0('Could not find project ',project,' in NITRC')))

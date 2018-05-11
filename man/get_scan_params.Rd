@@ -4,7 +4,8 @@
 \alias{get_scan_params}
 \title{Get scan parameters data}
 \usage{
-get_scan_params(session_ID = NULL, scan_type = NULL, project = NULL)
+get_scan_params(session_ID = NULL, scan_type = NULL, project = NULL,
+  jsessionID = NULL)
 }
 \arguments{
 \item{session_ID}{the session ID identifier, unique for each individual subject}
@@ -12,6 +13,8 @@ get_scan_params(session_ID = NULL, scan_type = NULL, project = NULL)
 \item{scan_type}{the type of scan for which we need to list the acquisition parameters}
 
 \item{project}{optional, signals the project to which the session_ID belongs}
+
+\item{jsessionID}{value for the JSESSIONID cookie}
 }
 \value{
 Data frame containing all the data for this particular scan session
