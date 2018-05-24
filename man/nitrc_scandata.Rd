@@ -20,5 +20,9 @@ Dataframe of scan data
 Retrieves NITRC scan data info
 }
 \examples{
-\dontrun{nitrc_scandata('ixi')}
+## Get scan data for the ixi project
+nitrc_scandata('ixi')
+
+## Get scan data for all accessible NITRC projects
+nitrc_scandata()
 }

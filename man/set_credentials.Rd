@@ -22,3 +22,6 @@ List of \code{username} and \code{password}
 Sets and returns the NITRC credentials. Should error
 if it cannot find the environment variables or they are not provided.
 }
+\examples{
+\dontrun{set_credentials(username = "user", password = "pass")}
+}

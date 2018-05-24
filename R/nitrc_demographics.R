@@ -10,8 +10,13 @@
 #' @importFrom dplyr bind_rows
 #' @importFrom httr content GET
 #' @importFrom jsonlite fromJSON
+#' @examples
+#' ## Get demographic data for the ixi project
+#' nitrc_demographics('ixi')
+#'
+#' ## Get demographic data for all accessible projects
+#' nitrc_demographics()
 #' @export
-#' @examples \dontrun{nitrc_demographics('ixi')}
 nitrc_demographics = function(project = NULL,
                               nitrc_projects = NULL,
                               jsessionID = NULL) {

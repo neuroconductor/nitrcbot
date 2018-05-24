@@ -1,6 +1,6 @@
 Package: nitrcbot
 Title: Download Image Files from the 'NeuroImaging Tools and Resources Collaboratory' 
-Version: 1.1.1
+Version: 1.2
 Authors@R: c(person("Adi", "Gherman", email = "adig@jhu.edu", role = c("aut", "cre")), person("John", "Muschelli", email="muschellij2@gmail.com", role = c("aut")))
 Maintainer: Adi Gherman <adig@jhu.edu>
 Description: Parses and downloads images from various 'NeuroImaging Tools and Resources Collaboratory' <https://www.nitrc.org> sets.
@@ -11,6 +11,9 @@ Encoding: UTF-8
 LazyData: true
 URL: https://www.nitrc.org
 RoxygenNote: 6.0.1
-Suggests: 
+Suggests:
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

@@ -10,7 +10,9 @@
 #' @importFrom httr content GET
 #' @importFrom jsonlite fromJSON
 #' @export
-#' @examples \dontrun{get_scan_resources('NITRC_IR_E10469')}
+#' @examples
+#' ## Get all scan resources for a specific session_ID
+#' get_scan_resources('NITRC_IR_E10469')
 get_scan_resources = function(session_ID = NULL,
                               scan_type = NULL,
                               project = NULL,

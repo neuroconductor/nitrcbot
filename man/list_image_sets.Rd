@@ -20,5 +20,6 @@ Authenticate and retrieve a list
 of all available datasets
 }
 \examples{
-\dontrun{list_image_sets()}
+## List all available NITRC projects
+list_image_sets()
 }

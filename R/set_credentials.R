@@ -7,6 +7,7 @@
 #' should be provided through the \code{NITRC_WEB_PASS} system variable.
 #' @param error Should this function error if variables are not specifed?
 #'
+#' @examples \dontrun{set_credentials(username = "user", password = "pass")}
 #' @return List of \code{username} and \code{password}
 #' @export
 set_credentials = function(username = NULL,

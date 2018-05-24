@@ -15,6 +15,12 @@
 #'
 #' @return List of downloaded file(s) with full paths
 #' @importFrom httr stop_for_status write_disk progress GET
+#' @examples
+#' ## Download the full directory (individual files) of T1 data
+#' t1_res <- download_nitrc_dir("NITRC_IR_E10453", scan_type="T1")
+#'
+#' ## Download a zipped file containing the full directory
+#' download_nitrc_dir("NITRC_IR_E10453", scan_type="T1", zipped = TRUE)
 #' @export
 download_nitrc_dir = function(session_ID = NULL,
                               subject_ID = NULL,

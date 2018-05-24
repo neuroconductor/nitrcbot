@@ -23,5 +23,6 @@ Data frame containing all the resources for this particular scan session
 Retrieves all the resources(files) associated with a session ID
 }
 \examples{
-\dontrun{get_scan_resources('NITRC_IR_E10469')}
+## Get all scan resources for a specific session_ID
+get_scan_resources('NITRC_IR_E10469')
 }

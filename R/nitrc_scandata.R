@@ -8,8 +8,13 @@
 #' @importFrom httr content GET
 #' @importFrom dplyr bind_rows
 #' @importFrom jsonlite fromJSON
+#' @examples
+#' ## Get scan data for the ixi project
+#' nitrc_scandata('ixi')
+#'
+#' ## Get scan data for all accessible NITRC projects
+#' nitrc_scandata()
 #' @export
-#' @examples \dontrun{nitrc_scandata('ixi')}
 nitrc_scandata = function(project = NULL,
                           nitrc_projects = NULL,
                           jsessionID = NULL) {

@@ -9,7 +9,9 @@
 #' @importFrom httr content GET stop_for_status
 #' @importFrom jsonlite fromJSON
 #' @export
-#' @examples \dontrun{list_image_sets()}
+#' @examples
+#' ## List all available NITRC projects
+#' list_image_sets()
 list_image_sets = function(project = NULL,
                            error = FALSE) {
   is_this_public(project = project)

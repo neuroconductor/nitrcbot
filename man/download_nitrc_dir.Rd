@@ -33,3 +33,10 @@ file containing the entire resource folder for that particular \code{subject_ID}
 or \code{session_ID}. If \code{scan_type} is specified than depending on the
 \code{zipped} the downloaded files will be zipped or not.
 }
+\examples{
+## Download the full directory (individual files) of T1 data
+t1_res <- download_nitrc_dir("NITRC_IR_E10453", scan_type="T1")
+
+## Download a zipped file containing the full directory
+download_nitrc_dir("NITRC_IR_E10453", scan_type="T1", zipped = TRUE)
+}

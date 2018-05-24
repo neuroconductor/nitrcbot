@@ -4,7 +4,7 @@
 \alias{read_nitrc_project}
 \title{Read NITRC project data}
 \usage{
-read_nitrc_project(project, jsessionID = NULL)
+read_nitrc_project(project = NULL, jsessionID = NULL)
 }
 \arguments{
 \item{project}{is the project for which
@@ -20,5 +20,9 @@ Dataframe of project data
 Reads in all data associated with a project (demographics and scan data)
 }
 \examples{
-\dontrun{read_nitrc_project('ixi')}
+## Read all data for the ixi project
+ixi_data <- read_nitrc_project('ixi')
+
+## Read data for all available projects
+nitrc_data <- read_nitrc_project()
 }
