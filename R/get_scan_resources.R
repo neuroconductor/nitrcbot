@@ -18,6 +18,7 @@ get_scan_resources = function(session_ID = NULL,
                               project = NULL,
                               jsessionID = NULL
                               ) {
+  scan_resources <- NULL
   if(is_this_public(session_ID = session_ID, project = project) && !is.null(session_ID)) {
     if(!is.null(scan_type)) {
       scan_params <- get_scan_params(session_ID,scan_type)
@@ -35,8 +36,9 @@ get_scan_resources = function(session_ID = NULL,
       scan_resources = fromJSON(query_nitrc(url,jsessionID))
     }
     scan_resources = scan_resources$ResultSet$Result
-    if(nrow(scan_resources)>0) {
-      return(scan_resources)
+
+    if(length(scan_resources)>0) {
+        return(scan_resources)
     }
   }
   return(NULL)
