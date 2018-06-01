@@ -1,4 +1,5 @@
 test_that("download_nitrc_file", {
+  skip_on_cran()
   testthat::expect_is(download_nitrc_file("/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-05.nii.gz"),"character")
   testthat::expect_is(download_nitrc_file("/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-05.nii.gz", verbose = TRUE),"character")
   testthat::expect_null(download_nitrc_file("/data/experiments/NITRC_IR_E10453/scans/DTI/resources/77382/files/IXI012-HH-1211-DTI-05.nii.gz1"))

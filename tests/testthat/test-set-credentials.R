@@ -1,4 +1,5 @@
 test_that("set_credentials", {
+  skip_on_cran()
   testthat::expect_error(set_credentials(username = "", password = ""), "form_loginname and form_pw are not specified")
   testthat::expect_is(set_credentials(username = "user", password = "pass"), "list")
 })
@@ -15,6 +16,7 @@ test_that("nitrc_login", {
 })
 
 test_that("check_user_session", {
+  skip_on_cran()
   current_jsessionid = query_nitrc('https://www.nitrc.org/ir/data/JSESSION')
   options("JSESSIONID" = current_jsessionid)
   testthat::expect_true(check_user_session())
