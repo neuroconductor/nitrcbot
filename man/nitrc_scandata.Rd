@@ -21,8 +21,8 @@ Retrieves NITRC scan data info
 }
 \examples{
 ## Get scan data for the ixi project
-nitrc_scandata('ixi')
+\donttest{nitrc_scandata('ixi')}
 
 ## Get scan data for all accessible NITRC projects
-nitrc_scandata()
+\donttest{nitrc_scandata()}
 }

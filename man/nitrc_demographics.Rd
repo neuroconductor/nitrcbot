@@ -24,8 +24,8 @@ Retrieves list of all subjects demographic data
 }
 \examples{
 ## Get demographic data for the ixi project
-nitrc_demographics('ixi')
+\donttest{nitrc_demographics('ixi')}
 
 ## Get demographic data for all accessible projects
-nitrc_demographics()
+\donttest{nitrc_demographics()}
 }

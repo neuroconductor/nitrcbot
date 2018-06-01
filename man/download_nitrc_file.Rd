@@ -28,6 +28,6 @@ Download a single file from NITRC
 }
 \examples{
 ## file_path is retrieved using the get_scan_resources() function
-r <- get_scan_resources('NITRC_IR_E10453')
-download_nitrc_file(r$URI[1])
+\donttest{r <- get_scan_resources('NITRC_IR_E10453')}
+\donttest{download_nitrc_file(r$URI[1])}
 }

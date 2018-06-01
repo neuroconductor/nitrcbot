@@ -11,7 +11,7 @@
 #' @export
 #' @examples
 #' ## List all available NITRC projects
-#' list_image_sets()
+#' \donttest{list_image_sets()}
 list_image_sets = function(project = NULL,
                            error = FALSE) {
   is_this_public(project = project)

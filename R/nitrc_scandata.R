@@ -10,10 +10,10 @@
 #' @importFrom jsonlite fromJSON
 #' @examples
 #' ## Get scan data for the ixi project
-#' nitrc_scandata('ixi')
+#' \donttest{nitrc_scandata('ixi')}
 #'
 #' ## Get scan data for all accessible NITRC projects
-#' nitrc_scandata()
+#' \donttest{nitrc_scandata()}
 #' @export
 nitrc_scandata = function(project = NULL,
                           nitrc_projects = NULL,

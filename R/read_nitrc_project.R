@@ -11,10 +11,10 @@
 #' @export
 #' @examples
 #' ## Read all data for the ixi project
-#' ixi_data <- read_nitrc_project('ixi')
+#' \donttest{ixi_data <- read_nitrc_project('ixi')}
 #'
 #' ## Read data for all available projects
-#' nitrc_data <- read_nitrc_project()
+#' \donttest{nitrc_data <- read_nitrc_project()}
 read_nitrc_project = function(project = NULL,
                               jsessionID = NULL) {
   nitrc_projects <- list_image_sets(project)
