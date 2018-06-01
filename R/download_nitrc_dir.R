@@ -17,10 +17,10 @@
 #' @importFrom httr stop_for_status write_disk progress GET
 #' @examples
 #' ## Download the full directory (individual files) of T1 data
-#' \donttest{t1_res <- download_nitrc_dir("NITRC_IR_E10453", scan_type="T1")}
+#' \dontrun{t1_res <- download_nitrc_dir("NITRC_IR_E10453", scan_type="T1")}
 #'
 #' ## Download a zipped file containing the full directory
-#' \donttest{download_nitrc_dir("NITRC_IR_E10453", scan_type="T1", zipped = TRUE)}
+#' \dontrun{download_nitrc_dir("NITRC_IR_E10453", scan_type="T1", zipped = TRUE)}
 #' @export
 download_nitrc_dir = function(session_ID = NULL,
                               subject_ID = NULL,

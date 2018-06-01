@@ -12,7 +12,7 @@
 #' @export
 #' @examples
 #' ## Get all scan resources for a specific session_ID
-#' \donttest{get_scan_resources('NITRC_IR_E10469')}
+#' \dontrun{get_scan_resources('NITRC_IR_E10469')}
 get_scan_resources = function(session_ID = NULL,
                               scan_type = NULL,
                               project = NULL,

@@ -12,8 +12,8 @@
 #' @importFrom httr stop_for_status write_disk progress GET
 #' @examples
 #' ## file_path is retrieved using the get_scan_resources() function
-#' \donttest{r <- get_scan_resources('NITRC_IR_E10453')}
-#' \donttest{download_nitrc_file(r$URI[1])}
+#' \dontrun{r <- get_scan_resources('NITRC_IR_E10453')}
+#' \dontrun{download_nitrc_file(r$URI[1])}
 #' @export
 download_nitrc_file = function(file_path,
                                destfile = NULL,
