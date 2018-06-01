@@ -21,5 +21,5 @@ of all available datasets
 }
 \examples{
 ## List all available NITRC projects
-\donttest{list_image_sets()}
+\dontrun{list_image_sets()}
 }

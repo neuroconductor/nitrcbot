@@ -21,8 +21,8 @@ Reads in all data associated with a project (demographics and scan data)
 }
 \examples{
 ## Read all data for the ixi project
-\donttest{ixi_data <- read_nitrc_project('ixi')}
+\dontrun{ixi_data <- read_nitrc_project('ixi')}
 
 ## Read data for all available projects
-\donttest{nitrc_data <- read_nitrc_project()}
+\dontrun{nitrc_data <- read_nitrc_project()}
 }

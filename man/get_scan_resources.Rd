@@ -24,5 +24,5 @@ Retrieves all the resources(files) associated with a session ID
 }
 \examples{
 ## Get all scan resources for a specific session_ID
-\donttest{get_scan_resources('NITRC_IR_E10469')}
+\dontrun{get_scan_resources('NITRC_IR_E10469')}
 }
