@@ -7,12 +7,6 @@ test_that("set_credentials", {
 test_that("nitrc_login", {
   skip_on_cran()
   testthat::expect_is(nitrc_login(), "logical")
-  username = Sys.getenv("TEST_NITRC_WEB_USER")
-  password = Sys.getenv("TEST_NITRC_WEB_PASS")
-  if(username == "") {username = "user"}
-  if(password == "") {password = "pass"}
-  set_credentials(username = username, password = password)
-  testthat::expect_true(nitrc_login())
 })
 
 test_that("check_user_session", {
