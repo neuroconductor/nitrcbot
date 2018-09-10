@@ -8,6 +8,13 @@ os:
   - linux
   - osx
 
+r:
+- 3.2
+- 3.3
+- 3.4
+- release
+- devel
+
 osx_image: xcode9
 
 after_success:
