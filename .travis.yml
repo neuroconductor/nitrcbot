@@ -23,6 +23,9 @@ bioc_packages:
 before_install:
 - export PACKAGE_NAME=`package_name`
 
+after_script:
+  - R CMD BiocCheck ${PACKAGE_NAME}*.tar.gz --no-check-bioc-views
+
 after_success:
   - Rscript -e 'covr::codecov()'
-  - R CMD BiocCheck ${PACKAGE_NAME}*.tar.gz
+
