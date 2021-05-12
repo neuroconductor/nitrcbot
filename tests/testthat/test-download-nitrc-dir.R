@@ -1,6 +1,6 @@
 test_that("download_nirc_dir", {
   skip_on_cran()
-  skip_on_travis()
+  skip_on_ci()
   testthat::expect_message(download_nitrc_dir(subject_ID = "NITRC_IR_S05274", project="42"),"Invalid project_ID.")
   testthat::expect_message(download_nitrc_dir(subject_ID = "NITRC_IR_S05274"), "If subject_ID is specified, project_ID cannot be missing.")
   testthat::expect_message(download_nitrc_dir('NITRC_IR_E10452', subject_ID = "NITRC_IR_S05274", project="ixi"),"Provided session_ID does not match the provided subject_ID session_ID.")
