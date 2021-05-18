@@ -1,9 +1,14 @@
 Package: nitrcbot
-Title: Download Image Files from the 'NeuroImaging Tools and Resources Collaboratory' 
+Title: Download Image Files from the 'NeuroImaging Tools and Resources
+        Collaboratory'
 Version: 1.2
-Authors@R: c(person("Adi", "Gherman", email = "adig@jhu.edu", role = c("aut", "cre")), person("John", "Muschelli", email="muschellij2@gmail.com", role = c("aut")))
+Authors@R: c(person("Adi", "Gherman", email = "adig@jhu.edu", role =
+        c("aut", "cre")), person("John", "Muschelli",
+        email="muschellij2@gmail.com", role = c("aut")))
 Maintainer: Adi Gherman <adig@jhu.edu>
-Description: Parses and downloads images from various 'NeuroImaging Tools and Resources Collaboratory' <https://www.nitrc.org> sets.
+Description: Parses and downloads images from various 'NeuroImaging
+        Tools and Resources Collaboratory' <https://www.nitrc.org>
+        sets.
 Imports: httr, dplyr, RCurl, jsonlite
 BugReports: https://github.com/adigherman/nitrcbot/issues
 License: GPL-2
@@ -11,9 +16,7 @@ Encoding: UTF-8
 LazyData: true
 URL: https://www.nitrc.org
 RoxygenNote: 6.0.1
-Suggests:
-    testthat,
-    covr,
-    knitr,
-    rmarkdown
+Suggests: testthat, covr, knitr, rmarkdown
 VignetteBuilder: knitr
+Repository: Neuroconductor
+biocViews: 
