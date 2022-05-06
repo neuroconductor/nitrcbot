@@ -4,8 +4,12 @@
 \alias{get_scan_params}
 \title{Get scan parameters data}
 \usage{
-get_scan_params(session_ID = NULL, scan_type = NULL, project = NULL,
-  jsessionID = NULL)
+get_scan_params(
+  session_ID = NULL,
+  scan_type = NULL,
+  project = NULL,
+  jsessionID = NULL
+)
 }
 \arguments{
 \item{session_ID}{the session ID identifier, unique for each individual subject}

@@ -4,8 +4,13 @@
 \alias{download_nitrc_file}
 \title{Download NITRC file}
 \usage{
-download_nitrc_file(file_path, destfile = NULL, prefix = NULL,
-  verbose = FALSE, error = FALSE)
+download_nitrc_file(
+  file_path,
+  destfile = NULL,
+  prefix = NULL,
+  verbose = FALSE,
+  error = FALSE
+)
 }
 \arguments{
 \item{file_path}{Path to the file to be dowloaded}

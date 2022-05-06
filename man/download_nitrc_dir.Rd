@@ -4,8 +4,15 @@
 \alias{download_nitrc_dir}
 \title{Download whole image drectory}
 \usage{
-download_nitrc_dir(session_ID = NULL, subject_ID = NULL, project = NULL,
-  scan_type = NULL, zipped = FALSE, verbose = FALSE, error = FALSE)
+download_nitrc_dir(
+  session_ID = NULL,
+  subject_ID = NULL,
+  project = NULL,
+  scan_type = NULL,
+  zipped = FALSE,
+  verbose = FALSE,
+  error = FALSE
+)
 }
 \arguments{
 \item{session_ID}{Downoad scan images for this particular session ID}

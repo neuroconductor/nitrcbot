@@ -4,8 +4,7 @@
 \alias{nitrc_demographics}
 \title{Get/list project demographics}
 \usage{
-nitrc_demographics(project = NULL, nitrc_projects = NULL,
-  jsessionID = NULL)
+nitrc_demographics(project = NULL, nitrc_projects = NULL, jsessionID = NULL)
 }
 \arguments{
 \item{project}{is the project for which
