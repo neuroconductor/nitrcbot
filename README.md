@@ -1,7 +1,7 @@
 # nitrcbot: Package that retrieves NITRC images
 [![Travis build status](https://travis-ci.org/adigherman/nitrcbot.svg?branch=master)](https://travis-ci.org/adigherman/nitrcbot)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/j9r27opai5xl48cy/branch/master?svg=true)](https://ci.appveyor.com/project/adigherman/nitrcbot)
-[![codecov](https://codecov.io/gh/adigherman/nitrcbot/branch/master/graph/badge.svg)](https://codecov.io/gh/adigherman/nitrcbot)
+[![codecov](https://codecov.io/gh/adigherman/nitrcbot/branch/master/graph/badge.svg?token=d9x3khLfLJ)](https://codecov.io/gh/adigherman/nitrcbot)
 
 ## About NITRC
 
