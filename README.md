@@ -17,7 +17,7 @@ fcon_1000|1000 Functional Connectomes|The 1000 Functional Connectomes Project.|P
 ixi|IXI dataset|IXI (Information eXtraction from Images) dataset. 600 MR images from normal, healthy subjects.|Public project.
 cs_schizbull08|CANDI Share: Schizophrenia Bulletin 2008|Version 1.1 of the CANDI Share Schizophrenia Bulletin 2008 data.|Public project.
 parktdi|High-quality diffusion-weighted imaging of Parkinson's disease|Data for a set of 53 subjects in a cross-sectional Parkinson's disease (PD) study.|Public project.
-studyforrest_rev003|Study Forrest rev003|Study Forrest rev00 3. http://studyforrest.org/ Supported by BMBF 01GQ1112 and NSF 1129855.|Public project.
+studyforrest_rev003|Study Forrest rev003|Study Forrest rev00 3. https://www.studyforrest.org Supported by BMBF 01GQ1112 and NSF 1129855.|Public project.
 ABIDE|ABIDE|Autism Brain Imaging Data Exchange.|Access required.
 adhd_200|ADHD-200|The ADHD-200 sample from the 1000 Functional Connectomes project.|Access required.
 beijing_enh|Beijing Enhanced|INDI Beijing Enhanced.|Access required.
