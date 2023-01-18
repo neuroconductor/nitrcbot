@@ -5,3 +5,8 @@
 ^codecov\.yml$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^DESCRIPTION\.bak$
+^\.github$
+^autoci\.yml$
+^autoci_pkgdown\.yml$
+^tic\.R$
